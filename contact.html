@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -32,6 +33,9 @@
     <![endif]-->
   </head>
   <body> 
+  
+
+
   <div class="wrapper">
     <!-- Background Photographer image -->
     <div class="hero">
@@ -80,7 +84,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="contact-form">
                   <h3>Contact</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis velit, tempore tenetur eos cumque tempora voluptatum enim deserunt.</p>
+                  <p>Hire me, please.</p>
                   <form action="">
                     <div class="form-group">                      
                       <input type="text" class="form-control" placeholder="Name">
@@ -102,6 +106,44 @@
         </div>
       </div>
     </section>
+	
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCZ2JshVHkhEdu7q1RXtJG4b99F5rpe_j0",
+    authDomain: "onlineportfoliov1.firebaseapp.com",
+    databaseURL: "https://onlineportfoliov1.firebaseio.com",
+    storageBucket: "onlineportfoliov1.appspot.com",
+    messagingSenderId: "493117342517"
+  };
+  firebase.initializeApp(config);
+    // Send message
+    var contactFrom = document.getElementById('contact-form');
+    var contactSuccess = document.getElementById('contact-success');
+    var contactError = document.getElementById('contact-error');
+    var sendBtn = document.getElementById('send-button');
+    var onMessageComplete = function(error) {
+      sendBtn.disabled = false;
+      if (error) {
+        contactError.innerHTML = 'Sorry. Could not send message.';
+      } else {
+        contactSuccess.innerHTML = "Message has been sent.";
+        // hide the form
+        contactFrom.style.display = 'none';
+      }
+    };
+    function sendMessage(formObj) {
+        // Store emails to firebase
+        var myFirebaseRef = new Firebase("https://yourappname.firebaseio.com/messages");
+        myFirebaseRef.push({
+          name: formObj.name.value,
+          email: formObj.email.value,
+          message: formObj.message.value
+        }, onMessageComplete);
+        sendBtn.disabled = true;
+        return false;
+    }
+</script>
     
  <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
