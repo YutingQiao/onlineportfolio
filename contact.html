@@ -139,7 +139,7 @@
     };
     function sendMessage(formObj) {
         // Store emails to firebase
-        var myFirebaseRef = new Firebase("https://onlineportfoliov1.firebaseio.com/");
+        var myFirebaseRef = new Firebase("https://onlineportfoliov1.firebaseio.com/message");
         myFirebaseRef.push({
           name: formObj.name.value,
           email: formObj.email.value,
