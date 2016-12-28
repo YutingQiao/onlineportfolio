@@ -107,6 +107,10 @@
       </div>
     </section>
 	
+	
+	
+<!-- http://www.fizerkhan.com/blog/posts/Startup-Landing-Pages-with-Firebase.html -->
+  
 	<script>
   // Initialize Firebase
   var config = {
@@ -134,7 +138,7 @@
     };
     function sendMessage(formObj) {
         // Store emails to firebase
-        var myFirebaseRef = new Firebase("https://yourappname.firebaseio.com/messages");
+        var myFirebaseRef = new Firebase("https://onlineportfoliov1.firebaseio.com");
         myFirebaseRef.push({
           name: formObj.name.value,
           email: formObj.email.value,
